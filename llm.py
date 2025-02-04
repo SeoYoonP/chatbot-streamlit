@@ -23,7 +23,7 @@ def get_session_history(session_id: str) -> BaseChatMessageHistory:
 
 def get_retriever():
     embedding = UpstageEmbeddings(model='solar-embedding-1-large')
-    index_name = 'shoppingmall'
+    index_name = '2frame-product'
     database = PineconeVectorStore.from_existing_index(index_name=index_name, embedding=embedding)
     retriever = database.as_retriever(search_kwargs={'k': 4})
     return retriever
@@ -90,14 +90,14 @@ def get_rag_chain():
     )
     
     system_prompt = (
-        "당신은 쇼핑몰 잡화 전문가입니다. 사용자의 쇼핑몰과 관련된 질문에 답변해주세요. "
-        "아래에 제공된 문서를 활용해서 답변해주시고, "
-        "답변을 알 수 없다면 모른다고 답변해주세요. "
-        "답변을 제공할 때는 '쇼핑몰 가이드에 따르면'이라는 문구로 시작하면서 답변해주시고, "
-        "2-3 문장 정도로 간단하고 명확하게 답변해주세요."
+        "당신은 쇼핑몰 FAQ 챗봇입니다. 사용자의 쇼핑몰에 관한 질문에 성실히 답변해주세요."
+        "아래에 제공된 문서를 활용해 답변해주세요. 답변을 알 수 없으면 모른다고 말하세요."
+        "2-3 문장 내외로 간단하게 설명해주세요."
+        "사용자 질문에 반드시 직접적으로 답해주세요."
+        "쇼핑몰과 관련이 없는 질문이라면 모른다고 말하세요"
         "\n\n"
         "{context}"
-    )   
+    )
     
     qa_prompt = ChatPromptTemplate.from_messages(
         [
