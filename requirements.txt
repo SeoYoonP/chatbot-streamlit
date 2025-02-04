@@ -28,7 +28,7 @@ jsonpointer==3.0.0
 jsonschema==4.22.0
 jsonschema-specifications==2023.12.1
 
-# 새 요구사항 반영: fastapi, uvicorn
+# FastAPI 및 Uvicorn
 fastapi>=0.115.6,<0.116.0
 uvicorn>=0.34.0,<0.35.0
 
@@ -36,8 +36,8 @@ python-dotenv>=1.0.1,<2.0.0
 pydantic>=2.10.5,<3.0.0
 pydantic-core==2.27.2
 
-# langchain 관련 항목 (새 요구사항 반영)
-langchain>=0.3.15,<0.4.0
+# langchain 관련 패키지 (langchain 최소 버전을 0.3.16으로 수정)
+langchain>=0.3.16,<0.4.0
 langchain-core>=0.3.31,<0.4.0
 langchain-chroma>=0.2.0,<0.3.0
 langchain-community>=0.3.15,<0.4.0
@@ -62,7 +62,7 @@ pandas==2.2.2
 pillow==10.3.0
 pinecone-client==3.2.2
 
-# protobuf는 Streamlit 1.35.0의 의존성을 맞추기 위해 아래와 같이 설정
+# Streamlit의 의존성에 맞추어 protobuf는 3.20 이상 5.0 미만으로 설정
 protobuf>=3.20,<5.0
 
 pyarrow==16.1.0
